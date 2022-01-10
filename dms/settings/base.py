@@ -29,6 +29,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     'home',
     'search',
+    'apps.users',
 ]
 
 THIRDPARTY_APPS =[
@@ -54,6 +55,9 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRDPARTY_APPS + WAGTAIL_APPS
 
 WSGI_APPLICATION = 'dms.wsgi.application'
 ROOT_URLCONF = 'dms.urls'
+
+DJANGO_ADMIN = os.environ.get("DJANGO_ADMIN", "dj-admin/")
+WAGTAIL_ADMIN = os.environ.get("WAGTAIL_ADMIN", "cms-admin/")
 
 # ======================================= MIDDLEWARE SETTINGS ======================================
 # ==================================================================================================
@@ -208,3 +212,63 @@ WAGTAILSEARCH_BACKENDS = {
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# ======================================== DJANGO LOGGING ==========================================
+# ==================================================================================================
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+        "require_debug_true": {
+            "()": "django.utils.log.RequireDebugTrue",
+        },
+    },
+    "formatters": {
+        "django.server": {
+            "()": "django.utils.log.ServerFormatter",
+            "format": "[{server_time}] {message}",
+            "style": "{",
+        }
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "filters": ["require_debug_true"],
+            "class": "logging.StreamHandler",
+        },
+        "prd-console": {
+            "level": "ERROR",
+            "filters": ["require_debug_false"],
+            "class": "logging.StreamHandler",
+        },
+        "django.server": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "django.server",
+        },
+        "mail_admins": {
+            "level": "ERROR",
+            "filters": ["require_debug_false"],
+            "class": "django.utils.log.AdminEmailHandler",
+        },
+    },
+    "loggers": {
+        "": {
+            "handlers": ["prd-console"],
+            "level": "ERROR",
+        },
+        "django": {
+            "handlers": ["console", "mail_admins"],
+            "level": "INFO",
+        },
+        "django.server": {
+            "handlers": ["django.server"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}
