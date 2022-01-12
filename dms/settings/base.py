@@ -29,7 +29,11 @@ DJANGO_APPS = [
 LOCAL_APPS = [
     "home",
     "search",
+    "apps.administrative_area",
+    "apps.civic_structure",
+    "apps.tourist_attraction",
     "apps.users",
+    "apps.utils",
 ]
 
 THIRDPARTY_APPS = [
@@ -296,10 +300,9 @@ IPYTHON_ARGUMENTS = [
 
 IPYTHON_KERNEL_DISPLAY_NAME = "Django Shell-Plus"
 
-SHELL_PLUS_POST_IMPORTS = [ # extra things to import in notebook
+SHELL_PLUS_POST_IMPORTS = [  # extra things to import in notebook
     ("module1.submodule", ("func1", "func2", "class1", "etc")),
-    ("module2.submodule", ("func1", "func2", "class1", "etc"))
-
+    ("module2.submodule", ("func1", "func2", "class1", "etc")),
 ]
 
-os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true" # only use in development
+os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"  # only use in development
