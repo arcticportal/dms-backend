@@ -1,7 +1,8 @@
 import strawberry_django
-from .models import Country
+from apps.administrative_area.models import Country as CountryModel
 
-@strawberry_django.type(Country)
+@strawberry_django.type(CountryModel)
 class Country:
-    name: str
     fips_10: str
+    continent: str
+    
