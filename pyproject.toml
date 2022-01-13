@@ -20,3 +20,7 @@ exclude = '''
     | dev.py
 )
 '''
+
+[tool.isort]
+skip_glob = "^(apps|dms|home|search)"
+single_line_exclusions = ["os", "json"]

@@ -9,6 +9,8 @@ __pycache__
 .DS_Store
 *.swp
 /venv/
+venv/
+venv
 /tmp/
 /.vagrant/
 /Vagrantfile.local

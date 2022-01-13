@@ -306,3 +306,33 @@ SHELL_PLUS_POST_IMPORTS = [  # extra things to import in notebook
 ]
 
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"  # only use in development
+
+
+# ======================================== MAPS DISPLAY CONFIG +====================================
+# ==================================================================================================
+
+LEAFLET_CONFIG = {
+    "DEFAULT_CENTER": (-1.94, 29.87),
+    "DEFAULT_ZOOM": 8,
+    "MAX_ZOOM": 25,
+    "SCALE": "both",
+    "TILES": [
+        ("Street Map", "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}),
+        (
+            "ArcGis Satellite",
+            "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/" "MapServer/tile/{z}/{y}/{x}.png",
+            {},
+        ),
+        (
+            "Monochrome Map",
+            "https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png",
+            {},
+        ),
+        (
+            "CartoDB TopoMap",
+            "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+            {},
+        ),
+        ("Topo Map", "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {}),
+    ],
+}

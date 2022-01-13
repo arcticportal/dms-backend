@@ -11,6 +11,7 @@ RUN apt-get update && apt-get -y --no-install-recommends install\
       fiona \
       gdal-bin \
       git \
+      libgdal-dev \
       libpq-dev \
       libproj-dev \
       wget \
