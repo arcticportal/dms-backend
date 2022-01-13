@@ -18,6 +18,7 @@ notebook==6.4.6
 psycopg2-binary==2.9.3
 pytest-django==4.5.2
 pytest-cov==3.0.0
+strawberry-graphql-django==0.2.5
 uvicorn==0.16.0
 wagtail>=2.15,<2.16
 Werkzeug==2.0.2  # needed for runserver_plus

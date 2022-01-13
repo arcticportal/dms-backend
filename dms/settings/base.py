@@ -40,6 +40,7 @@ THIRDPARTY_APPS = [
     "modelcluster",
     "taggit",
     "django_extensions",
+    "strawberry_django",
 ]
 
 WAGTAIL_APPS = [

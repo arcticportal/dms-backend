@@ -5,6 +5,9 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from strawberry.django.views import AsyncGraphQLView
+from .schema import schema
+
 from search import views as search_views
 
 urlpatterns = [
@@ -12,6 +15,7 @@ urlpatterns = [
     path(settings.WAGTAIL_ADMIN, include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
+    path('graphql', AsyncGraphQLView.as_view(schema=schema)),
 ]
 
 
