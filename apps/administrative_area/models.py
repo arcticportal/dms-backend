@@ -14,6 +14,8 @@ class Country(AdministrativeArea):
     wikidata_id = models.CharField(max_length=16, null=True, blank=True)
     continent = models.CharField(max_length=128, null=True, blank=True)
     subregion = models.CharField(max_length=128, null=True, blank=True)
+    iso2 = models.CharField(max_length=3, null=True, blank=True)
+    iso2 = models.CharField(max_length=3, null=True, blank=True)
 
     class Meta:
         db_table = "country"

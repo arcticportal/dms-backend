@@ -1,21 +1,21 @@
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from strawberry.django.views import AsyncGraphQLView
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
-from strawberry.django.views import AsyncGraphQLView
-from .schema import schema
-
 from search import views as search_views
+
+from .schema import schema
 
 urlpatterns = [
     path(settings.DJANGO_ADMIN, admin.site.urls),
     path(settings.WAGTAIL_ADMIN, include(wagtailadmin_urls)),
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
-    path('graphiql/', AsyncGraphQLView.as_view(schema=schema)),
+    path("graphiql/", AsyncGraphQLView.as_view(schema=schema)),
 ]
 
 

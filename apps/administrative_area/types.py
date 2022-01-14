@@ -1,8 +1,25 @@
 import strawberry_django
-from apps.administrative_area.models import Country as CountryModel
+from strawberry_django import auto
 
-@strawberry_django.type(CountryModel)
+from apps.administrative_area.models import Country
+
+
+@strawberry_django.filters.filter(Country, lookups=True)
+class CountryFilter:
+    id: auto
+    name: auto
+
+
+@strawberry_django.ordering.order(Country)
+class CountryOrder:
+    id: auto
+    name: auto
+
+
+@strawberry_django.type(Country, filters=CountryFilter, order=CountryOrder, pagination=True)
 class Country:
+    id: auto
+    name: auto
+    mpoly: str
     fips_10: str
     continent: str
-    
