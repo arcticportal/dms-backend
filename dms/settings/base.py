@@ -31,6 +31,7 @@ LOCAL_APPS = [
     "search",
     "apps.administrative_area",
     "apps.civic_structure",
+    "apps.landform",
     "apps.tourist_attraction",
     "apps.users",
     "apps.utils",
