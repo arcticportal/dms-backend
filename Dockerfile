@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.9-slim
 
 RUN adduser --disabled-password --gecos '' python;\
     mkdir /opt/python;\
