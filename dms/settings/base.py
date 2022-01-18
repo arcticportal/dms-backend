@@ -42,6 +42,8 @@ THIRDPARTY_APPS = [
     "taggit",
     "django_extensions",
     "strawberry_django",
+    "django_celery_beat",
+    "django_celery_results",
 ]
 
 WAGTAIL_APPS = [
@@ -167,7 +169,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Iceland"
 
 USE_I18N = True
 
@@ -337,4 +339,29 @@ LEAFLET_CONFIG = {
         ),
         ("Topo Map", "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {}),
     ],
+}
+
+
+# ======================================= CELERY SETTINGS ==========================================
+# ==================================================================================================
+
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER", "redis://platform-redis:6379/0")
+CELERY_RESULT_BACKEND = "django-db"
+CELERY_CACHE_BACKEND = "default"
+CELERY_TIMEZONE = "Iceland"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+
+# ======================================= REDIS and CACHING ========================================
+# ==================================================================================================
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.environ.get("DB_CACHING", "redis://platform-redis:6379/1"),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    },
 }
