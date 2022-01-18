@@ -1,5 +1,5 @@
 """
-Django settings for dms project.
+Django settings for Data Management System project.
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

@@ -192,3 +192,6 @@ About
 Loading complete
 
 temp/
+
+# celery file
+django.celery
