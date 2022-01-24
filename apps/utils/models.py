@@ -11,6 +11,8 @@ class Thing(models.Model):
 
     class Meta:
         db_table = "thing"
+        verbose_name = "Thing"
+        verbose_name_plural = "Things"
 
     def __str__(self):
         return self.name
@@ -22,3 +24,5 @@ class Place(Thing):
 
     class Meta:
         db_table = "place"
+        verbose_name = "Place"
+        verbose_name_plural = "Places"

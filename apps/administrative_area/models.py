@@ -8,6 +8,8 @@ class AdministrativeArea(Place):
 
     class Meta:
         db_table = "administrative_area"
+        verbose_name = "Administrative area"
+        verbose_name_plural = "Administrative areas"
 
 
 class Country(AdministrativeArea):

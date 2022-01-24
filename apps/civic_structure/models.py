@@ -8,6 +8,8 @@ class CivicStructure(Place):
 
     class Meta:
         db_table = "civic_structure"
+        verbose_name = "Civic structure"
+        verbose_name_plural = "Civic structures"
 
 
 class Airport(CivicStructure):
@@ -17,6 +19,8 @@ class Airport(CivicStructure):
 
     class Meta:
         db_table = "airport"
+        verbose_name = "Airport"
+        verbose_name_plural = "Airports"
 
 
 class BoatTerminal(CivicStructure):
@@ -24,3 +28,5 @@ class BoatTerminal(CivicStructure):
 
     class Meta:
         db_table = "boat_terminal"
+        verbose_name = "Boat terminal"
+        verbose_name_plural = "Boat terminals"

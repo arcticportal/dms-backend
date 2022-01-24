@@ -14,6 +14,8 @@ RUN apt-get update && apt-get -y --no-install-recommends install\
       libgdal-dev \
       libpq-dev \
       libproj-dev \
+      # for django DB graph
+      python3-pygraphviz \
       wget \
       zlib1g-dev \
       && python3 -m pip install --upgrade pip \
