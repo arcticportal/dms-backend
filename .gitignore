@@ -195,3 +195,4 @@ temp/
 
 # celery file
 django.celery
+dms-jupyter/
