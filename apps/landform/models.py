@@ -7,9 +7,7 @@ class Landform(Place):
     pass
 
     class Meta:
-        db_table = "landform"
-        verbose_name = "Landform"
-        verbose_name_plural = "Landforms"
+        abstract = True
 
 
 class Continent(Landform):
@@ -25,9 +23,7 @@ class BodyOfWater(Landform):
     pass
 
     class Meta:
-        db_table = "body_of_water"
-        verbose_name = "Body of water"
-        verbose_name_plural = "Bodies of water"
+        abstract = True
 
 
 class OceanBodyOfWater(BodyOfWater):

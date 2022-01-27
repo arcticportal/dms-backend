@@ -10,9 +10,7 @@ class Thing(models.Model):
     wikidata_id = models.CharField(max_length=16, null=True, blank=True)
 
     class Meta:
-        db_table = "thing"
-        verbose_name = "Thing"
-        verbose_name_plural = "Things"
+        abstract = True
 
     def __str__(self):
         return self.name
@@ -23,6 +21,4 @@ class Place(Thing):
     point = models.MultiPointField(null=True, blank=True)
 
     class Meta:
-        db_table = "place"
-        verbose_name = "Place"
-        verbose_name_plural = "Places"
+        abstract = True

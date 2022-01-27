@@ -7,9 +7,7 @@ class CivicStructure(Place):
     pass
 
     class Meta:
-        db_table = "civic_structure"
-        verbose_name = "Civic structure"
-        verbose_name_plural = "Civic structures"
+        abstract = True
 
 
 class Airport(CivicStructure):

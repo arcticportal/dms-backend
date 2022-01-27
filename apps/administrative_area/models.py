@@ -1,23 +1,46 @@
 from django.contrib.gis.db import models
 
 from apps.utils.models import Place
+from apps.landform.models import Continent
 
 
 class AdministrativeArea(Place):
     pass
 
     class Meta:
-        db_table = "administrative_area"
-        verbose_name = "Administrative area"
-        verbose_name_plural = "Administrative areas"
+        abstract = True
+
+
+class Subregion(models.Model):
+    name = models.CharField(max_length=1024, null=True, blank=True)
+
+    class Meta:
+        db_table = "subregion"
+        verbose_name = "Subregion"
+        verbose_name_plural = "Subregions"
+
+    def __str__(self):
+        return self.name
+
+
+class CountryType(models.Model):
+    name = models.CharField(max_length=1024, null=True, blank=True)
+
+    class Meta:
+        db_table = "country_type"
+        verbose_name = "Country Type"
+        verbose_name_plural = "Country types"
+
+    def __str__(self):
+        return self.name
 
 
 class Country(AdministrativeArea):
     postal = models.CharField(max_length=16, null=True, blank=True)
-    country_type = models.CharField(max_length=128, null=True, blank=True)
+    country_type = models.ForeignKey(CountryType, null=True, blank=True, on_delete=models.SET_NULL)
     fips_10 = models.CharField(max_length=4, null=True, blank=True)
-    continent = models.CharField(max_length=128, null=True, blank=True)
-    subregion = models.CharField(max_length=128, null=True, blank=True)
+    continent = models.ForeignKey(Continent, null=True, blank=True, on_delete=models.SET_NULL)
+    subregion = models.ForeignKey(Subregion, null=True, blank=True, on_delete=models.SET_NULL)
     iso2 = models.CharField(max_length=3, null=True, blank=True)
     iso3 = models.CharField(max_length=3, null=True, blank=True)
 
