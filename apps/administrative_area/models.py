@@ -50,10 +50,24 @@ class Country(AdministrativeArea):
         verbose_name_plural = "Countries"
 
 
+class StateType(models.Model):
+    name = models.CharField(max_length=1024, null=True, blank=True)
+
+    class Meta:
+        db_table = "state_type"
+        verbose_name = "State Type"
+        verbose_name_plural = "State types"
+
+    def __str__(self):
+        return self.name if self.name else ""
+
+
 class State(AdministrativeArea):
     adm1_code = models.CharField(max_length=16, null=True, blank=True)
     iso_3166_1_2 = models.CharField(max_length=16, null=True, blank=True)
-    state_type = models.CharField(max_length=16, null=True, blank=True)
+    fips = models.CharField(max_length=16, null=True, blank=True)
+    state_type = models.ForeignKey(StateType, null=True, blank=True, on_delete=models.SET_NULL)
+    country = models.ForeignKey(Country, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         db_table = "state"

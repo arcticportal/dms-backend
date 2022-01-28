@@ -13,7 +13,7 @@ class Thing(models.Model):
         abstract = True
 
     def __str__(self):
-        return self.name
+        return self.name if self.name else ' '
 
 
 class Place(Thing):
