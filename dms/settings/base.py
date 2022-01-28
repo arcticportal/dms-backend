@@ -38,12 +38,13 @@ LOCAL_APPS = [
 ]
 
 THIRDPARTY_APPS = [
-    "modelcluster",
-    "taggit",
-    "django_extensions",
-    "strawberry_django",
     "django_celery_beat",
     "django_celery_results",
+    "django_extensions",
+    "leaflet",
+    "modelcluster",
+    "strawberry_django",
+    "taggit",
 ]
 
 WAGTAIL_APPS = [

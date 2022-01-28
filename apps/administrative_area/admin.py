@@ -9,8 +9,10 @@ from .models import Country
 class OSMCountry(LeafletGeoAdmin):
     list_display = (
         "name",
-        "postal",
         "fips_10",
+        "iso2",
+        "iso3",
     )
     search_fields = ("name",)
+    list_filter = ("continent", "country_type", "subregion")
     form = RawAdminForm
