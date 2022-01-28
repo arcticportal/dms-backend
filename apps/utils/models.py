@@ -17,7 +17,7 @@ class Thing(models.Model):
 
 
 class Place(Thing):
-    mpoly = models.MultiPolygonField(null=True, blank=True)
+    geometry = models.MultiPolygonField(null=True, blank=True)
     point = models.MultiPointField(null=True, blank=True)
 
     class Meta:
