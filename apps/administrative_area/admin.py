@@ -19,7 +19,7 @@ class OSMCountry(LeafletGeoAdmin):
 
 
 @admin.register(State)
-class OSMCountry(LeafletGeoAdmin):
+class OSMState(LeafletGeoAdmin):
     list_display = (
         "name",
         "fips",

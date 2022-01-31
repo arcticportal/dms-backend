@@ -1,7 +1,7 @@
 from django.contrib.gis.db import models
 
-from apps.utils.models import Place
 from apps.landform.models import Continent
+from apps.utils.models import Place
 
 
 class AdministrativeArea(Place):
