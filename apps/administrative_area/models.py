@@ -55,7 +55,7 @@ class StateType(models.Model):
 
     class Meta:
         db_table = "state_type"
-        verbose_name = "State Type"
+        verbose_name = "State type"
         verbose_name_plural = "State types"
 
     def __str__(self):
@@ -75,11 +75,23 @@ class State(AdministrativeArea):
         verbose_name_plural = "States"
 
 
+class CityType(models.Model):
+    name = models.CharField(max_length=128, null=True, blank=True)
+
+    class Meta:
+        db_table = "city_type"
+        verbose_name = "City type"
+        verbose_name_plural = "City types"
+
+    def __str__(self):
+        return self.name if self.name else ""
+
+
 class City(AdministrativeArea):
-    adm1_code = models.CharField(max_length=16, null=True, blank=True)
-    iso_3166_1_2 = models.CharField(max_length=16, null=True, blank=True)
-    state_type = models.CharField(max_length=16, null=True, blank=True)
-    fips = models.CharField(max_length=16, null=True, blank=True)
+    geonames_id = models.CharField(max_length=16, null=True, blank=True)
+    whosonfirst_id = models.CharField(max_length=16, null=True, blank=True)
+    city_type = models.ForeignKey(CityType, null=True, blank=True, on_delete=models.SET_NULL)
+    country = models.ForeignKey(Country, null=True, blank=True, on_delete=models.SET_NULL)
 
     class Meta:
         db_table = "city"

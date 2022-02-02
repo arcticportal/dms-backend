@@ -1,7 +1,7 @@
 import strawberry_django
 from strawberry_django import auto
 
-from apps.administrative_area.models import Country, State
+from apps.administrative_area.models import Country, State, City
 
 
 @strawberry_django.filters.filter(Country, lookups=True)
@@ -56,3 +56,27 @@ class StateType:
     fips: str
     state_type: str
     country: str
+
+
+@strawberry_django.filters.filter(City, lookups=True)
+class CityFilter:
+    name: auto
+    country: auto
+
+
+@strawberry_django.ordering.order(City)
+class CityOrder:
+    id: auto
+    name: auto
+
+
+@strawberry_django.type(City, filters=CityFilter, order=CityOrder, pagination=True)
+class CityType:
+    id: auto
+    name: auto
+    point: str
+    city_type: str
+    country: str
+    wikidata_id: str
+    whosonfirst_id: str
+    geonames_id: str

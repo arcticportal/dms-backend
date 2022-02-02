@@ -2,7 +2,7 @@ from django.contrib.gis import admin
 from leaflet.admin import LeafletGeoAdmin
 
 from .forms import RawAdminForm
-from .models import Country, State
+from .models import Country, State, City
 
 
 @admin.register(Country)
@@ -29,3 +29,14 @@ class OSMState(LeafletGeoAdmin):
     )
     search_fields = ("name",)
     list_filter = ("state_type",)
+
+
+@admin.register(City)
+class OSMCity(LeafletGeoAdmin):
+    list_display = (
+        "name",
+        "wikidata_id",
+        "country",
+    )
+    search_fields = ("name",)
+    list_filter = ("city_type",)
