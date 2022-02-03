@@ -4,8 +4,11 @@ import strawberry
 import strawberry_django
 
 from apps.administrative_area.types import CityQuery, CountryQuery, StateQuery
-from apps.civic_structure.types import (AirportQuery, BoatTerminalQuery,
-                                        ScientificStationQuery)
+from apps.civic_structure.types import (
+    AirportQuery,
+    BoatTerminalQuery,
+    ScientificStationQuery,
+)
 from apps.landform.types import BodyOfWaterQuery
 
 

@@ -20,3 +20,6 @@ exclude = '''
     | dev.py
 )
 '''
+
+[tool.isort]
+profile = "black"
