@@ -3,28 +3,27 @@ from strawberry_django import auto
 
 from .models import BoatTerminal, ScientificStation
 
+# -------------------------------------------------------------
+# --------------------STRAWBERRY_FILTERS-----------------------
+
 
 @strawberry_django.filters.filter(BoatTerminal, lookups=True)
 class BoatTerminalFilter:
     name: auto
 
 
-@strawberry_django.ordering.order(BoatTerminal)
-class BoatTerminalOrder:
-    id: auto
+@strawberry_django.filters.filter(ScientificStation, lookups=True)
+class ScientificStationFilter:
     name: auto
 
 
-@strawberry_django.type(BoatTerminal, filters=BoatTerminalFilter, order=BoatTerminalOrder, pagination=True)
-class BoatTerminalType:
+# -------------------------------------------------------------
+# --------------------STRAWBERRY_ORDERS------------------------
+
+
+@strawberry_django.ordering.order(BoatTerminal)
+class BoatTerminalOrder:
     id: auto
-    name: str
-    url: str
-    point: str
-
-
-@strawberry_django.filters.filter(ScientificStation, lookups=True)
-class ScientificStationFilter:
     name: auto
 
 
@@ -34,8 +33,22 @@ class ScientificStationOrder:
     name: auto
 
 
-@strawberry_django.type(ScientificStation, filters=ScientificStationFilter, order=ScientificStationOrder, pagination=True)
-class ScientificStationType:
+# -------------------------------------------------------------
+# --------------------STRAWBERRY_QUERY_TYPES-------------------
+
+
+@strawberry_django.type(BoatTerminal, filters=BoatTerminalFilter, order=BoatTerminalOrder, pagination=True)
+class BoatTerminalQuery:
+    id: auto
+    name: str
+    url: str
+    point: str
+
+
+@strawberry_django.type(
+    ScientificStation, filters=ScientificStationFilter, order=ScientificStationOrder, pagination=True
+)
+class ScientificStationQuery:
     id: auto
     name: str
     geonames_id: str

@@ -3,25 +3,34 @@ from typing import List
 import strawberry
 import strawberry_django
 
-from apps.administrative_area.types import CountryType, StateType, CityType
-from apps.civic_structure.types import BoatTerminalType, ScientificStationType
+from apps.administrative_area.types import CityQuery, CountryQuery, StateQuery
+from apps.civic_structure.types import (BoatTerminalQuery,
+                                        ScientificStationQuery)
+from apps.landform.types import BodyOfWaterQuery
 
 
 @strawberry.type
 class Query:
-    country: CountryType = strawberry_django.field()
-    countries: List[CountryType] = strawberry_django.field()
+    # administrative_area
+    country: CountryQuery = strawberry_django.field()
+    countries: List[CountryQuery] = strawberry_django.field()
 
-    state: StateType = strawberry_django.field()
-    states: List[StateType] = strawberry_django.field()
+    state: StateQuery = strawberry_django.field()
+    states: List[StateQuery] = strawberry_django.field()
 
-    boat_terminal: BoatTerminalType = strawberry_django.field()
-    boat_terminals: List[BoatTerminalType] = strawberry_django.field()
+    city: CityQuery = strawberry_django.field()
+    cities: List[CityQuery] = strawberry_django.field()
 
-    city: CityType = strawberry_django.field()
-    cities: List[CityType] = strawberry_django.field()
-    
-    scientific_station: ScientificStationType = strawberry_django.field()
-    scientific_stations: List[ScientificStationType] = strawberry_django.field()
+    # civic_structure
+    boat_terminal: BoatTerminalQuery = strawberry_django.field()
+    boat_terminals: List[BoatTerminalQuery] = strawberry_django.field()
+
+    scientific_station: ScientificStationQuery = strawberry_django.field()
+    scientific_stations: List[ScientificStationQuery] = strawberry_django.field()
+
+    # landform
+    body_of_water: BodyOfWaterQuery = strawberry_django.field()
+    bodies_of_water: List[BodyOfWaterQuery] = strawberry_django.field()
+
 
 schema = strawberry.Schema(query=Query)

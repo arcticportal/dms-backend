@@ -2,7 +2,7 @@ from django.contrib.gis import admin
 from leaflet.admin import LeafletGeoAdmin
 
 from .forms import RawAdminForm
-from .models import Country, State, City
+from .models import City, Country, State
 
 
 @admin.register(Country)

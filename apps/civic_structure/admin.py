@@ -15,11 +15,6 @@ class AdminBoatTerminal(LeafletGeoAdmin):
 
 @admin.register(ScientificStation)
 class AdminScientificStation(LeafletGeoAdmin):
-    list_display = (
-        "name",
-        "country",
-        "geonames_id",
-        "wikidata_id"
-    )
+    list_display = ("name", "country", "geonames_id", "wikidata_id")
     search_fields = ("name",)
     list_filter = ("science_station_type",)
