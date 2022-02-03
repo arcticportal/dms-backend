@@ -23,6 +23,7 @@ View all icelandic states
 ```
 query State {
   states(filters: {country: {pk: 146}}) {
+    id
     name
     fips
     adm1Code
@@ -43,6 +44,16 @@ query Cities {
     wikidataId
     whosonfirstId
     geonamesId
+  }
+}
+```
+Show all airports in Norðurland eystra
+```
+query Airports {
+  airports(filters: {state: {pk: 4991}}) {
+    name
+    point
+    airportType
   }
 }
 ```

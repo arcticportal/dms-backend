@@ -4,7 +4,7 @@ import strawberry
 import strawberry_django
 
 from apps.administrative_area.types import CityQuery, CountryQuery, StateQuery
-from apps.civic_structure.types import (BoatTerminalQuery,
+from apps.civic_structure.types import (AirportQuery, BoatTerminalQuery,
                                         ScientificStationQuery)
 from apps.landform.types import BodyOfWaterQuery
 
@@ -24,6 +24,9 @@ class Query:
     # civic_structure
     boat_terminal: BoatTerminalQuery = strawberry_django.field()
     boat_terminals: List[BoatTerminalQuery] = strawberry_django.field()
+
+    airport: AirportQuery = strawberry_django.field()
+    airports: List[AirportQuery] = strawberry_django.field()
 
     scientific_station: ScientificStationQuery = strawberry_django.field()
     scientific_stations: List[ScientificStationQuery] = strawberry_django.field()

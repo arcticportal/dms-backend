@@ -1,7 +1,7 @@
 import strawberry_django
 from strawberry_django import auto
 
-from .models import BoatTerminal, ScientificStation
+from .models import Airport, BoatTerminal, ScientificStation
 
 # -------------------------------------------------------------
 # --------------------STRAWBERRY_FILTERS-----------------------
@@ -17,6 +17,13 @@ class ScientificStationFilter:
     name: auto
 
 
+@strawberry_django.filters.filter(Airport, lookups=True)
+class AirportFilter:
+    name: auto
+    state: auto
+    country: auto
+
+
 # -------------------------------------------------------------
 # --------------------STRAWBERRY_ORDERS------------------------
 
@@ -29,6 +36,12 @@ class BoatTerminalOrder:
 
 @strawberry_django.ordering.order(ScientificStation)
 class ScientificStationOrder:
+    id: auto
+    name: auto
+
+
+@strawberry_django.ordering.order(Airport)
+class AirportOrder:
     id: auto
     name: auto
 
@@ -57,3 +70,20 @@ class ScientificStationQuery:
     country: str
     point: str
     science_station_type: str
+
+
+@strawberry_django.type(Airport, filters=AirportFilter, order=AirportOrder, pagination=True)
+class AirportQuery:
+    id: auto
+    name: str
+    point: str
+    url: str
+    wikipedia_url: str
+    iata_code: str
+    gps_code: str
+    local_code: str
+    airport_type: str
+    elevation_ft: str
+    our_airports_id: str
+    country: str
+    state: str
