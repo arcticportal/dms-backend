@@ -43,6 +43,7 @@ THIRDPARTY_APPS = [
     "django_extensions",
     "leaflet",
     "modelcluster",
+    "raster",
     "strawberry_django",
     "taggit",
 ]
@@ -323,6 +324,9 @@ LEAFLET_CONFIG = {
     "SCALE": "both",
     "TILES": [
         ("Street Map", "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}),
+        ("My map", "http://localhost:8000/raster/tiles/4/{z}/{x}/{y}.png", {}),
+        ("My map1", "http://localhost:8000/raster/tiles/1/{z}/{x}/{y}.png", {}),
+        ("My map2", "http://localhost:8000/raster/tiles/2/{z}/{x}/{y}.png", {}),
         (
             "ArcGis Satellite",
             "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/" "MapServer/tile/{z}/{y}/{x}.png",
@@ -353,6 +357,8 @@ CELERY_TIMEZONE = "Iceland"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
+# for django-raster
+RASTER_USE_CELERY = True
 
 # ======================================= REDIS and CACHING ========================================
 # ==================================================================================================

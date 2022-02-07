@@ -29,7 +29,8 @@ USER python
 WORKDIR /opt/python
 
 # create staticfiles directory
-RUN mkdir -p staticfiles
+RUN mkdir -p staticfiles \
+             media/rasters
 
 # prevent from writing pycfiles
 ENV PYTHONDONTWRITEBYTECODE=1

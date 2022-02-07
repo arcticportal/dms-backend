@@ -16,6 +16,7 @@ urlpatterns = [
     path("documents/", include(wagtaildocs_urls)),
     path("search/", search_views.search, name="search"),
     path("graphiql/", AsyncGraphQLView.as_view(schema=schema)),
+    path("raster/", include("raster.urls")),
 ]
 
 

@@ -39,3 +39,11 @@ class BodyOfWater(Landform):
         db_table = "body_of_water"
         verbose_name = "Body of water"
         verbose_name_plural = "Bodies of water"
+
+
+class RasterTest(models.Model):
+    name = models.CharField(max_length=32, null=True, blank=True)
+    raster = models.RasterField()
+
+    class Meta:
+        db_table = "raster_test"
