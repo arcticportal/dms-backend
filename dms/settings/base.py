@@ -38,6 +38,7 @@ LOCAL_APPS = [
 ]
 
 THIRDPARTY_APPS = [
+    "corsheaders",
     "django_celery_beat",
     "django_celery_results",
     "django_extensions",
@@ -74,6 +75,7 @@ WAGTAIL_ADMIN = os.environ.get("WAGTAIL_ADMIN", "cms-admin/")
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -366,3 +368,11 @@ CACHES = {
         },
     },
 }
+
+# ======================================= CORS HEADERS =============================================
+# ==================================================================================================
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
