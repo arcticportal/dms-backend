@@ -19,6 +19,7 @@ node_modules/
 /.idea/
 .vscode
 coverage
+.coverage
 .python-version
 
 # Distribution / packaging
@@ -39,3 +40,11 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+build
+.dockerignore
+Dockerfile
+Dockerfile.prod
+.env
+.git
+.gitignore
